@@ -3,9 +3,9 @@
     "aws_access_key":  "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key":  "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "atlas_username":  "{{env `ATLAS_USERNAME`}}",
-    "us_east_1_ami":   "ami-9a562df2",
+    "us_west_2_ami":   "ami-5189a661",
     "name":            "aws-ubuntu-base",
-    "us_east_1_name":  "aws-us-east-1-ubuntu-base",
+    "us_west_2_name":  "aws-us-west-2-ubuntu-base",
     "ssh_username":    "ubuntu",
     "scripts_dir":     "packer/scripts/ubuntu",
     "config_dir":      "packer/config",
@@ -28,21 +28,21 @@
   },
   "builders": [
     {
-      "name":            "aws-us-east-1-ubuntu-base",
+      "name":            "aws-us-west-2-ubuntu-base",
       "type":            "amazon-ebs",
       "access_key":      "{{user `aws_access_key`}}",
       "secret_key":      "{{user `aws_secret_key`}}",
-      "region":          "us-east-1",
+      "region":          "us-west-2",
       "vpc_id":          "",
       "subnet_id":       "",
-      "source_ami":      "{{user `us_east_1_ami`}}",
+      "source_ami":      "{{user `us_west_2_ami`}}",
       "instance_type":   "t2.micro",
       "ssh_username":    "{{user `ssh_username`}}",
       "ssh_timeout":     "10m",
-      "ami_name":        "{{user `us_east_1_name`}} {{timestamp}}",
-      "ami_description": "{{user `us_east_1_name`}} AMI",
-      "run_tags":        { "ami-create": "{{user `us_east_1_name`}}" },
-      "tags":            { "ami": "{{user `us_east_1_name`}}" },
+      "ami_name":        "{{user `us_west_2_name`}} {{timestamp}}",
+      "ami_description": "{{user `us_west_2_name`}} AMI",
+      "run_tags":        { "ami-create": "{{user `us_west_2_name`}}" },
+      "tags":            { "ami": "{{user `us_west_2_name`}}" },
       "ssh_private_ip":  false,
       "associate_public_ip_address": true
     }
@@ -83,8 +83,8 @@
   "post-processors": [
     {
       "type": "atlas",
-      "only": ["aws-us-east-1-ubuntu-base"],
-      "artifact": "{{user `atlas_username`}}/{{user `us_east_1_name`}}",
+      "only": ["aws-us-west-2-ubuntu-base"],
+      "artifact": "{{user `atlas_username`}}/{{user `us_west_2_name`}}",
       "artifact_type": "amazon.image",
       "metadata": {
         "created_at": "{{timestamp}}"
