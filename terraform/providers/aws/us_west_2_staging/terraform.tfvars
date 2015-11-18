@@ -1,4 +1,5 @@
 #--------------------------------------------------------------
+#turtlebender/aws-global
 # General
 #--------------------------------------------------------------
 
@@ -13,10 +14,10 @@
 # `terraform push` commands - changing this WILL affect your
 # terraform.tfstate file, so use caution
 
-region            = "us-east-1"
-atlas_token       = "REPLACE_IN_ATLAS"
-atlas_username    = "REPLACE_IN_ATLAS"
-atlas_environment = "aws-us-east-1-staging"
+region            = "us-west-2"
+atlas_token       = "zqcSMiBpJTJp7mq__HzNaTkvPF8dPxsxFjknSpnmKGKnuDdz4wFFmAppwPeZs9QTbiA"
+atlas_username    = "turtlebender"
+atlas_environment = "aws-us-west-2-staging"
 atlas_aws_global  = "aws-global"
 name              = "staging-demo"
 site_key_name     = "site"
@@ -28,7 +29,7 @@ vault_ssl_cert    = "REPLACE_IN_ATLAS"
 vault_ssl_key     = "REPLACE_IN_ATLAS"
 vault_token       = "REPLACE_IN_ATLAS"
 artifact_type     = "amazon.image"
-sub_domain        = "us-east-1.aws.staging"
+sub_domain        = "us-west-2.aws.staging"
 
 #--------------------------------------------------------------
 # Network
@@ -41,7 +42,7 @@ public_subnets    = "10.139.101.0/24,10.139.102.0/24,10.139.103.0/24"
 
 # Some subnets may only be able to be created in specific
 # availability zones depending on your AWS account
-azs = "us-east-1a,us-east-1c,us-east-1e"
+azs = "us-west-2a,us-west-2b,us-west-2c"
 
 # Bastion
 bastion_instance_type = "t2.micro"
